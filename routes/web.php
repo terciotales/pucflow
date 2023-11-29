@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -29,18 +30,15 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/teste', function () {
-    return Inertia::render('Teste/PageTeste');
-})->middleware(['auth', 'verified'])->name('teste');
-
-Route::get('/teste/pageteste2', function () {
-    return Inertia::render('Teste/PageTeste2');
-})->middleware(['auth', 'verified'])->name('teste-page');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+//check if route exists
+Route::get('/{nome_usuario}', [ProfileController::class, 'show'])
+     ->where('nome_usuario', '[A-Za-z0-9\-]+')
+     ->name('perfil-publico');
 
 require __DIR__.'/auth.php';

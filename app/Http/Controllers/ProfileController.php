@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -59,5 +60,25 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function show($nome_usuario)
+    {
+        // Verifique se o nome de usuário corresponde ao padrão alfanumérico
+        if (!preg_match('/^[A-Za-z0-9\-]+$/', $nome_usuario)) {
+            abort(404);
+        }
+
+        // Tente encontrar o usuário com base no campo 'name'
+        $usuario = User::where('name', $nome_usuario)->first();
+
+        // Se o usuário não for encontrado, retorne 404
+        if (!$usuario) {
+            abort(404);
+        }
+
+        return Inertia::render('User', [
+            'usuario' => $usuario,
+        ]);
     }
 }
