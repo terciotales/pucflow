@@ -23,9 +23,6 @@ class PublicUserProfile extends Controller {
 //            abort(404);
 //        }
 
-        return Inertia::render( 'Teste/User', [
-            'name' => $username->name,
-            'email' => $username->email,
-        ] );
+        return Inertia::render( 'Profile/Profile', [] );
     }
 }
