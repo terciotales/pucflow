@@ -1,20 +1,24 @@
 import Logo from "@/Icons/Logo.jsx";
 import Dropdown from "@/Components/Dropdown.jsx";
-import { useState } from 'react';
+import {useState} from 'react';
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
-import { Link } from '@inertiajs/react';
+import {Head, Link} from '@inertiajs/react';
 
 
-export default function Navbar ({user}) {
+export default function Navbar({user}) {
     return (
-        <div className="bg-blue-dark flex justify-between p-4">
-            <Logo className="w-32 h-auto"/>
-            <div className="hidden sm:flex sm:items-center sm:ms-6">
-                <div className="ms-3 relative">
-                    <Dropdown>
-                        <Dropdown.Trigger>
+        <>
+            <Head title={user.name}/>
+            <div className="bg-blue-dark flex justify-between p-4">
+                <Link href="/">
+                    <Logo className="w-32 h-auto"/>
+                </Link>
+                <div className="hidden sm:flex sm:items-center sm:ms-6">
+                    <div className="ms-3 relative">
+                        <Dropdown>
+                            <Dropdown.Trigger>
                                         <span className="inline-flex rounded-md">
                                             <button
                                                 type="button"
@@ -36,17 +40,18 @@ export default function Navbar ({user}) {
                                                 </svg>
                                             </button>
                                         </span>
-                        </Dropdown.Trigger>
+                            </Dropdown.Trigger>
 
-                        <Dropdown.Content className="border-orange">
-                            <Dropdown.Link href={route('profile.edit')}>Perfil</Dropdown.Link>
-                            <Dropdown.Link href={route('logout')} method="post" as="button">
-                                Sair
-                            </Dropdown.Link>
-                        </Dropdown.Content>
-                    </Dropdown>
+                            <Dropdown.Content className="border-orange">
+                                <Dropdown.Link href={route('profile.edit')}>Perfil</Dropdown.Link>
+                                <Dropdown.Link href={route('logout')} method="post" as="button">
+                                    Sair
+                                </Dropdown.Link>
+                            </Dropdown.Content>
+                        </Dropdown>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };

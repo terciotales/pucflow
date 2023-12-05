@@ -11,16 +11,19 @@ export default {
     ],
 
     theme: {
-        colors: {
-            'orange' : '#F6A62B',
-            'orange-dark' : '#613C04',
-            'blue' : '#072A51',
-            'blue-dark' : '#072A51',
-            'blue-bg' : '#042241',
-            'white' : '#ffffff',
-            'black' : '#000000'
-        },
         extend: {
+            colors: {
+                'orange' : '#F6A62B',
+                'orange-dark' : '#613C04',
+                'blue' : '#072A51',
+                'blue-dark' : '#072A51',
+                'blue-bg' : '#042241',
+                'white' : '#ffffff',
+                'black' : '#000000'
+            },
+            width: {
+                'post' : 'calc((100% - 1rem) / 3)'
+            },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
