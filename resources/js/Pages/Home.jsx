@@ -6,7 +6,7 @@ export default function Home({ auth, laravelVersion, phpVersion }) {
         <>
             <Head title="PucFlow" />
             <Navbar user={auth.user}/>
-            <div className="relative sm:flex sm:justify-center sm:items-center h-full bg-dots-darker bg-center bg-blue-bg dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+            <div className="relative sm:flex sm:justify-center sm:items-center h-full bg-dots-darker bg-center bg-blue-bg selection:bg-red-500 selection:text-white">
                 <div className="max-w-4xl w-full mx-auto py-8">
 
                 </div>

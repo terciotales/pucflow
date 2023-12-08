@@ -22,7 +22,7 @@ export default function Navbar({user}) {
                                         <span className="inline-flex rounded-md">
                                             <button
                                                 type="button"
-                                                className="inline-flex text-white items-center px-3 py-2 border-transparent text-sm leading-4 font-medium rounded-md hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
+                                                className="inline-flex text-white items-center px-3 py-2 border-transparent text-sm leading-4 font-medium rounded-md hover:text-gray-200 focus:outline-none transition ease-in-out duration-150"
                                             >
                                                 {user.name}
 
@@ -43,7 +43,7 @@ export default function Navbar({user}) {
                             </Dropdown.Trigger>
 
                             <Dropdown.Content className="border-orange">
-                                <Dropdown.Link href={route('profile.edit')}>Perfil</Dropdown.Link>
+                                <Dropdown.Link href={`/${user.name}`}>Perfil</Dropdown.Link>
                                 <Dropdown.Link href={route('logout')} method="post" as="button">
                                     Sair
                                 </Dropdown.Link>
