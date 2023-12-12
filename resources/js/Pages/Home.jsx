@@ -1,81 +1,22 @@
 import { Link, Head } from '@inertiajs/react';
 import Navbar from "@/Components/Navbar.jsx";
 import Post from "@/Components/Post.jsx";
+import React from "react";
+import users from "../../data/users.json";
 
-const posts = [
-    {
-        id: 1,
-        title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc sapien aliquet nunc, quis aliquet nisl nunc eu nisi. Sed vitae nisl eget nunc aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet.',
-        date: '2021-10-10',
-        media: 'https://picsum.photos/900',
-        author: 'Gabriel'
-    },
-    {
-        id: 2,
-        title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc sapien aliquet nunc, quis aliquet nisl nunc eu nisi. Sed vitae nisl eget nunc aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet.',
-        date: '2021-10-10',
-        media: 'https://picsum.photos/901',
-        author: 'Lucas'
-    },
-    {
-        id: 2,
-        title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc sapien aliquet nunc, quis aliquet nisl nunc eu nisi. Sed vitae nisl eget nunc aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet.',
-        date: '2021-10-10',
-        media: 'https://picsum.photos/902',
-        author: 'Felipe'
-    },
-    {
-        id: 2,
-        title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc sapien aliquet nunc, quis aliquet nisl nunc eu nisi. Sed vitae nisl eget nunc aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet.',
-        date: '2021-10-10',
-        media: 'https://picsum.photos/903',
-        author: 'Pedro'
-    },
-    {
-        id: 2,
-        title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc sapien aliquet nunc, quis aliquet nisl nunc eu nisi. Sed vitae nisl eget nunc aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet.',
-        date: '2021-10-10',
-        media: 'https://picsum.photos/904',
-        author: 'Mateus'
-    },
-    {
-        id: 2,
-        title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc sapien aliquet nunc, quis aliquet nisl nunc eu nisi. Sed vitae nisl eget nunc aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet.',
-        date: '2021-10-10',
-        media: 'https://picsum.photos/905',
-        author: 'José'
-    },
-    {
-        id: 2,
-        title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc sapien aliquet nunc, quis aliquet nisl nunc eu nisi. Sed vitae nisl eget nunc aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet.',
-        date: '2021-10-10',
-        media: 'https://picsum.photos/906',
-        author: 'Marcos'
-    },
-    {
-        id: 2,
-        title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc sapien aliquet nunc, quis aliquet nisl nunc eu nisi. Sed vitae nisl eget nunc aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet.',
-        date: '2021-10-10',
-        media: 'https://picsum.photos/907',
-        author: 'João'
-    },
-    {
-        id: 2,
-        title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc sapien aliquet nunc, quis aliquet nisl nunc eu nisi. Sed vitae nisl eget nunc aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet.',
-        date: '2021-10-10',
-        media: 'https://picsum.photos/908',
-        author: 'Maria'
-    },
-    {
-        id: 2,
-        title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc sapien aliquet nunc, quis aliquet nisl nunc eu nisi. Sed vitae nisl eget nunc aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet.',
-        date: '2021-10-10',
-        media: 'https://picsum.photos/909',
-        author: 'Fernando'
-    },
-];
+const getPosts = async () => {
+     const response= fetch("https://jsonplaceholder.typicode.com/posts");
+
+    return (await response).json();
+};
 
 export default function Home({ auth, laravelVersion, phpVersion }) {
+    const [posts, setPosts] = React.useState([]);
+
+    React.useEffect(() => {
+        getPosts().then((data) => setPosts(data));
+    }, []);
+
     return (
         <>
             <Head title="PucFlow" />
@@ -87,10 +28,10 @@ export default function Home({ auth, laravelVersion, phpVersion }) {
                             <Post
                                 key={post.id}
                                 PostTitle={post.title}
-                                PostContent={post.title}
-                                PostAuthor={post.author}
-                                PostDate={post.date}
-                                PostMedia={post.media}
+                                PostContent={post.body}
+                                PostAuthor={users.find((user) => user.id === post.userId).name}
+                                PostDate={"Hoje"}
+                                PostMedia={`https://picsum.photos/seed/${post.id}/500/300`}
                             />
                         );
                     })}

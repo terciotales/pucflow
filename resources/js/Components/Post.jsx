@@ -38,7 +38,7 @@ export default function Post({PostTitle, PostMedia, PostContent, PostAuthor, Pos
                 className="bg-gray-200"
                 avatar={
                     <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                        R
+                        {PostAuthor[0]}
                     </Avatar>
                 }
                 title={PostAuthor}

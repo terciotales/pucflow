@@ -16,49 +16,49 @@ const posts = [
         media: 'https://picsum.photos/501',
     },
     {
-        id: 2,
+        id: 3,
         title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc sapien aliquet nunc, quis aliquet nisl nunc eu nisi. Sed vitae nisl eget nunc aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet.',
         date: '2021-10-10',
         media: 'https://picsum.photos/502',
     },
     {
-        id: 2,
+        id: 4,
         title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc sapien aliquet nunc, quis aliquet nisl nunc eu nisi. Sed vitae nisl eget nunc aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet.',
         date: '2021-10-10',
         media: 'https://picsum.photos/503',
     },
     {
-        id: 2,
+        id: 5,
         title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc sapien aliquet nunc, quis aliquet nisl nunc eu nisi. Sed vitae nisl eget nunc aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet.',
         date: '2021-10-10',
         media: 'https://picsum.photos/504',
     },
     {
-        id: 2,
+        id: 6,
         title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc sapien aliquet nunc, quis aliquet nisl nunc eu nisi. Sed vitae nisl eget nunc aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet.',
         date: '2021-10-10',
         media: 'https://picsum.photos/505',
     },
     {
-        id: 2,
+        id: 7,
         title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc sapien aliquet nunc, quis aliquet nisl nunc eu nisi. Sed vitae nisl eget nunc aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet.',
         date: '2021-10-10',
         media: 'https://picsum.photos/506',
     },
     {
-        id: 2,
+        id: 8,
         title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc sapien aliquet nunc, quis aliquet nisl nunc eu nisi. Sed vitae nisl eget nunc aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet.',
         date: '2021-10-10',
         media: 'https://picsum.photos/507',
     },
     {
-        id: 2,
+        id: 9,
         title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc sapien aliquet nunc, quis aliquet nisl nunc eu nisi. Sed vitae nisl eget nunc aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet.',
         date: '2021-10-10',
         media: 'https://picsum.photos/508',
     },
     {
-        id: 2,
+        id: 10,
         title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies aliquam, nunc sapien aliquet nunc, quis aliquet nisl nunc eu nisi. Sed vitae nisl eget nunc aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet.',
         date: '2021-10-10',
         media: 'https://picsum.photos/509',
@@ -67,8 +67,12 @@ const posts = [
 
 export default function Profile(props) {
     const {
-        auth
+        auth,
+        name,
+        email
     } = props;
+
+    console.log(props)
 
     return (
         <>
@@ -84,8 +88,8 @@ export default function Profile(props) {
                             </span>
                         </span>
                         <div className="flex flex-col gap-3 justify-center">
-                            <span className="text-5xl">{auth.user.name}</span>
-                            <span className="text-2xl">{auth.user.email}</span>
+                            <span className="text-5xl">{name}</span>
+                            <span className="text-2xl">{email}</span>
                         </div>
                     </div>
                 </div>
